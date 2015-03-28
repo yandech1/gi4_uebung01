@@ -1,4 +1,4 @@
-# Licence
+# Lizenz
 
 In diesem Repository sind Übungsaufgaben zur Vorlesung "Grundgebiete der Informatik 4" zufinden,
 die im Rahmen des Studiengangs "Technische Informatik" an der RWTH Aachen angeboten werden.
