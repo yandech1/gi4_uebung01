@@ -18,11 +18,9 @@ int main(int argc, char* argv[], char* envp[])
 
 Der erste Parameter `argc` entspricht dabei der Anzahl der über die Kommandozeile übergebenen Argumente. Der zweite Parameter `argv` ist ein Zeiger auf ein String-Array und enthält die eigentlichen Argumente als Zeichenketten, welche in der Kommandozeile durch Leerzeichen getrennt werden müssen. Per Definition entspricht dabei `argv[0]` immer dem Namen des aufgerufenen Programms.
 
-1. 
-    Schreiben Sie ein Programm `myecho`, das wie der bekannte Shell-Befehl `echo` (in seiner einfachsten Form) alle nachfolgenden Parameter auf der Standardausgabe ausgibt!
+1. Schreiben Sie ein Programm `myecho`, das wie der bekannte Shell-Befehl `echo` (in seiner einfachsten Form) alle nachfolgenden Parameter auf der Standardausgabe ausgibt!
 
-2. 
-    Als eine Erweiterung dieses Mechanismus lassen sich auch die von der Shell übergebenen Umgebungsvariablen in einem Programm abfragen. Umgebungsvariablen sind Variablen, die einen String-Wert und einen Namen haben, über den auf den String-Wert zugegriffen werden kann. Dazu dient der (oft weggelassene) dritte Parameter der main-Funktion ( `char* envp[]` ), der auf ein String-Array verweist, das alle gesetzten Name-/Werte-Paare in der Form `NAME=WERT` enthält. Das Ende dieser Tabelle ist dabei durch den NULL-Zeiger gekennzeichnet.
+2. Als eine Erweiterung dieses Mechanismus lassen sich auch die von der Shell übergebenen Umgebungsvariablen in einem Programm abfragen. Umgebungsvariablen sind Variablen, die einen String-Wert und einen Namen haben, über den auf den String-Wert zugegriffen werden kann. Dazu dient der (oft weggelassene) dritte Parameter der main-Funktion ( `char* envp[]` ), der auf ein String-Array verweist, das alle gesetzten Name-/Werte-Paare in der Form `NAME=WERT` enthält. Das Ende dieser Tabelle ist dabei durch den NULL-Zeiger gekennzeichnet.
 
     Schreiben Sie analog zum Unix-Kommando `env` ein Programm `myenv`, das alle gesetzten Umgebungsvariablen sowie zusätzlich deren Anzahl auf der Standardausgabe ausgibt!
 
@@ -30,16 +28,14 @@ Der erste Parameter `argc` entspricht dabei der Anzahl der über die Kommandozei
 ## 1.2 Rückgabewerte von Programmen auswerten
 Der Rückgabewert der main-Funktion ist bekanntlich eine Ganzzahl vom Typ `int` und tatsächlich lässt sich dieser Wert nach der Beendigung eines Programms über die spezielle Umgebungsvariable `$?` in der Kommandozeile abfragen.
 
-1. 
-  Schreiben Sie ein Programm `isset`, das als Kommandozeilenparameter den Namen einer Umgebungsvariable übergeben bekommt und das dann testet, ob der Wert dieser Variable gesetzt ist oder nicht. Ist dies der Fall, so soll das Programm den Wert `0` zurückliefern, andernfalls den Wert `-1`.
+1. Schreiben Sie ein Programm `isset`, das als Kommandozeilenparameter den Namen einer Umgebungsvariable übergeben bekommt und das dann testet, ob der Wert dieser Variable gesetzt ist oder nicht. Ist dies der Fall, so soll das Programm den Wert `0` zurückliefern, andernfalls den Wert `-1`.
 
   **Tipp:** Zur Umgebungsvariablenabfrage können Sie auch folgende Funktion verwenden:
   ```c
   char *getenv(const char *name);
   ```
 
-2. 
-  Erweitern Sie das Programm, so dass bei der Angabe der Option `-v` zusätzlich noch der Wert der abgefragten Umgebungsvariablen ausgegeben wird!
+2. Erweitern Sie das Programm, so dass bei der Angabe der Option `-v` zusätzlich noch der Wert der abgefragten Umgebungsvariablen ausgegeben wird!
 
 
 ### 1.3 Erzeugen und Ausführen von Prozessen in C
@@ -56,16 +52,13 @@ Der Rückgabewert der fork-Funktion ist `0` für den Kindsprozess, der Elternpro
 int execv(char* path, char* argv[]);
 ```
 
-1. 
-  Schreiben Sie ein Programm, das als Parameter den Namen eines weiteren Programms bekommt und dieses Programm dann sofort mithilfe von `execv()` ausführt!
+1. Schreiben Sie ein Programm, das als Parameter den Namen eines weiteren Programms bekommt und dieses Programm dann sofort mithilfe von `execv()` ausführt!
 
-2. 
-  Ergänzen Sie das Programm derart, dass vor der Ausführung des zweiten Programms zunächst mithilfe von `fork()` ein neuer Prozess erzeugt wird! Lassen Sie dabei auch die Prozess-IDs ausgeben!
+2. Ergänzen Sie das Programm derart, dass vor der Ausführung des zweiten Programms zunächst mithilfe von `fork()` ein neuer Prozess erzeugt wird! Lassen Sie dabei auch die Prozess-IDs ausgeben!
 
 ## 1.4: Programmierung einer eigenen Shell (Zusatzaufgabe)
 
-1. 
-  Erweitern Sie Ihr Programm aus Aufgabe 1.3 so, dass das auszuführende Programm sowie seine Parameter über die Standardeingabe eingelesen werden!
+1. Erweitern Sie Ihr Programm aus Aufgabe 1.3 so, dass das auszuführende Programm sowie seine Parameter über die Standardeingabe eingelesen werden!
   
   **Tipp:** Hierzu können Sie zum Beispiel die komfortablen Funktionen der sog. readline-Bibliothek benutzen:
   
@@ -75,8 +68,6 @@ int execv(char* path, char* argv[]);
   char *readline (const char *prompt);
   void add_history (const char *line);
   ```
-2. 
-  Lassen Sie den Pfad zu den ausführbaren Programmen durch eine Umgebungsvariable bestimmbar machen! Erlauben Sie auch mehrere, durch `:` getrennte Suchpfade!
+2. Lassen Sie den Pfad zu den ausführbaren Programmen durch eine Umgebungsvariable bestimmbar machen! Erlauben Sie auch mehrere, durch `:` getrennte Suchpfade!
 
-3. 
-  Unterscheiden Sie bei der Auswertung der Eingaben zwischen eingebauten Funktionen (wie zum Beispiel das Setzen von Umgebungsvariablen) und dem Aufruf von externen Programmen!
+3. Unterscheiden Sie bei der Auswertung der Eingaben zwischen eingebauten Funktionen (wie zum Beispiel das Setzen von Umgebungsvariablen) und dem Aufruf von externen Programmen!
