@@ -58,7 +58,7 @@ int execv(char* path, char* argv[]);
 
 2. Ergänzen Sie das Programm derart, dass vor der Ausführung des zweiten Programms zunächst mithilfe von `fork()` ein neuer Prozess erzeugt wird! Lassen Sie dabei auch die Prozess-IDs ausgeben!
 
-## 4: Programmierung einer eigenen Shell (Zusatzaufgabe)
+## 4 Programmierung einer eigenen Shell (Zusatzaufgabe)
 
 1. Erweitern Sie Ihr Programm aus Aufgabe 3 so, dass das auszuführende Programm sowie seine Parameter über die Standardeingabe eingelesen werden!
   
