@@ -1,12 +1,14 @@
 # Übung 1: C-Programme und Shell-Kommandos
 
-Zu praktisch jedem Betriebssystem gibt es einen Interpreter mit einer eigenen Sprache, in dem elementare Kommandos ausgeführt werden können. Unter Unix ist dieser Interpreter die Unix-Shell und bietet sehr vielfältige Möglichkeiten. In dieser einführenden Übung sollen zunächst ein paar Zusammenhänge zwischen einer solchen Shell und der über sie ausgeführten Kommandos und Programme untersucht werden.
+Zu praktisch jedem Betriebssystem gibt es einen Interpreter mit einer eigenen Sprache, in dem elementare Kommandos ausgeführt werden können.
+Unter Unix ist dieser Interpreter die Unix-Shell und bietet sehr vielfältige Möglichkeiten.
+In dieser einführenden Übung sollen zunächst ein paar Zusammenhänge zwischen einer solchen Shell und der über sie ausgeführten Kommandos und Programme untersucht werden.
 
 **Tipp:**
-Unix-Kommandos können in den [Man-Pages](http://de.wikipedia.org/wiki/Manpage) nachgeschlagen werden.
+Weitere Informationen zu den hier benötigten Unix-Systemaufrufen und Unix-Kommandos finden sich in den [Man-Pages](http://de.wikipedia.org/wiki/Manpage) nachgeschlagen werden.
 
 
-## 1.1 Argumente auf der Kommandozeile übergeben
+## 1 Argumente auf der Kommandozeile übergeben
 Ähnlich, wie einer C-Funktion Parameter übergeben werden können, kann dies auch an ein fertiges Hauptprogramm aus der Kommandozeile der Shell heraus erfolgen. Diese Argumente werden dabei über die Parameter der main-Funktion übergeben:
 
 ```c
@@ -25,10 +27,10 @@ Der erste Parameter `argc` entspricht dabei der Anzahl der über die Kommandozei
     Schreiben Sie analog zum Unix-Kommando `env` ein Programm `myenv`, das alle gesetzten Umgebungsvariablen sowie zusätzlich deren Anzahl auf der Standardausgabe ausgibt!
 
 
-## 1.2 Rückgabewerte von Programmen auswerten
+## 2 Rückgabewerte von Programmen auswerten
 Der Rückgabewert der main-Funktion ist bekanntlich eine Ganzzahl vom Typ `int` und tatsächlich lässt sich dieser Wert nach der Beendigung eines Programms über die spezielle Umgebungsvariable `$?` in der Kommandozeile abfragen.
 
-1. Schreiben Sie ein Programm `isset`, das als Kommandozeilenparameter den Namen einer Umgebungsvariable übergeben bekommt und das dann testet, ob der Wert dieser Variable gesetzt ist oder nicht. Ist dies der Fall, so soll das Programm den Wert `0` zurückliefern, andernfalls den Wert `-1`.
+1. Schreiben Sie ein Programm `isset`, das als Kommandozeilenparameter den Namen einer Umgebungsvariable übergeben bekommt und das dann testet, ob der Wert dieser Variable gesetzt ist oder nicht. Ist dies der Fall, so soll das Programm den Wert `0` zurückliefern, andernfalls den Wert `1`.
 
   **Tipp:** Zur Umgebungsvariablenabfrage können Sie auch folgende Funktion verwenden:
   ```c
@@ -38,7 +40,7 @@ Der Rückgabewert der main-Funktion ist bekanntlich eine Ganzzahl vom Typ `int` 
 2. Erweitern Sie das Programm, so dass bei der Angabe der Option `-v` zusätzlich noch der Wert der abgefragten Umgebungsvariablen ausgegeben wird!
 
 
-### 1.3 Erzeugen und Ausführen von Prozessen in C
+### 3 Erzeugen und Ausführen von Prozessen in C
 
 Bei Unix werden neue Prozesse mit dem Systemaufruf `fork` erzeugt:
 
@@ -56,9 +58,9 @@ int execv(char* path, char* argv[]);
 
 2. Ergänzen Sie das Programm derart, dass vor der Ausführung des zweiten Programms zunächst mithilfe von `fork()` ein neuer Prozess erzeugt wird! Lassen Sie dabei auch die Prozess-IDs ausgeben!
 
-## 1.4: Programmierung einer eigenen Shell (Zusatzaufgabe)
+## 4: Programmierung einer eigenen Shell (Zusatzaufgabe)
 
-1. Erweitern Sie Ihr Programm aus Aufgabe 1.3 so, dass das auszuführende Programm sowie seine Parameter über die Standardeingabe eingelesen werden!
+1. Erweitern Sie Ihr Programm aus Aufgabe 3 so, dass das auszuführende Programm sowie seine Parameter über die Standardeingabe eingelesen werden!
   
   **Tipp:** Hierzu können Sie zum Beispiel die komfortablen Funktionen der sog. readline-Bibliothek benutzen:
   
